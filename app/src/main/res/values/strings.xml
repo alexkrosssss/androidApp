@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="btnLogs">define button that invoked parser</string>
 </resources>
