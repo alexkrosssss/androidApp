@@ -12,18 +12,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.labs.app.R;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivityTestModel extends AppCompatActivity implements View.OnClickListener{
 
     TextView textView;
-    Button btnBack, btn1, btn2, btn3, btn4;
-
+    Button btnBack, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12,
+            btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20;
+    LinearLayout llMain, llSubMain;
+    int countButton = 0;
+    Map<Integer, Integer> buttonMap = new HashMap<>();
+    Map<Integer, Integer> textButtonMap = new HashMap<>();
     private static final String TAG = "testLog";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +40,46 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
         setContentView(R.layout.linear_equations);
         textView =  findViewById(R.id.textView);
         btnBack = findViewById(R.id.btnBack);
+
+        llMain = findViewById(R.id.llMain);
+        llSubMain = findViewById(R.id.llSubMain);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
 
-
         btnBack.setOnClickListener(this::onClick);
+
+
+        Field[] xmlStrings = R.string.class.getDeclaredFields();
+        for (Field xmlString: xmlStrings) {
+            Integer i = new Integer(0);
+            int a=0;
+            try {
+                a=xmlString.getInt(i);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            String[] strs = xmlString.toString().split("\\.");
+            String name = strs[strs.length - 1];
+            if (name.substring(0, name.length() - 1).equals("btn")) {
+                buttonMap.put(Integer.parseInt(name.substring(name.length() - 1)), a);
+            } else if (name.substring(0, name.length() - 2).equals("btn")) {
+                buttonMap.put(Integer.parseInt(name.substring(name.length() - 2)), a);
+            } else if (name.substring(0, name.length() - 1).equals("textBtn")) {
+                textButtonMap.put(Integer.parseInt(name.substring(name.length() - 1)), a);
+            } else if (name.substring(0, name.length() - 2).equals("textBtn")) {
+                textButtonMap.put(Integer.parseInt(name.substring(name.length() - 2)), a);
+            }
+        }
+        countButton++;
+        btn1.setId(buttonMap.get(countButton));
+        countButton++;
+        btn2.setId(buttonMap.get(countButton));
+        countButton++;
+        btn3.setId(buttonMap.get(countButton));
+        countButton++;
+        btn4.setId(buttonMap.get(countButton));
         btn1.setOnClickListener(this::onClick);
         btn2.setOnClickListener(this::onClick);
         btn3.setOnClickListener(this::onClick);
@@ -46,7 +88,6 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
         registerForContextMenu(btn2);
         registerForContextMenu(btn3);
         registerForContextMenu(btn4);
-
     }
 
     @Override
@@ -63,9 +104,6 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        Button btn;
-
-        Method[] declaredMethods = item.getClass().getClass().getDeclaredMethods();
         if (item.getActionProvider() != null) {
             textView.setText("not null");
         } else {
@@ -94,37 +132,71 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Toast.makeText(this, item.getTitle(), Toast.LENGTH_LONG).show();
+
         switch (item.getItemId()) {
+            case R.id.menuCreateLevel:
+                if (countButton >= 20) {
+                    Toast.makeText(this, "You create max number levels", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                    int l = llSubMain.getChildCount();
+                    LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    lParams.setMargins(15, 10, 15, 10);
+                    lParams.weight = 1;
+
+                    Button bt = new Button(this);
+                    countButton++;
+                    bt.setId(buttonMap.get(countButton));
+                    bt.setText(buttonMap.get(countButton));
+                    bt.setOnClickListener(this::onClick);
+                    bt.setBackgroundColor(getResources().getColor(R.color.teal_200));
+                    registerForContextMenu(bt);
+                    if (l == 4) {
+                        LinearLayout linearLayout = new LinearLayout(this);
+                        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                        LinearLayout.LayoutParams lParams2 = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lParams2.setMargins(15, 20, 15, 20);
+
+                        llMain.addView(linearLayout);
+                        //                    llMain.addView(linearLayout,lParams2);
+                        llSubMain = linearLayout;
+                    }
+                    if (countButton >= 13) {
+                        lParams.setMargins(15, 35, 15, 10);
+                    }
+                    llSubMain.addView(bt, lParams);
+                }
+
+                break;
+            case R.id.menuClearLevels:
+                llMain.removeAllViews();
+                countButton = 4;
+                Toast.makeText(this, "new levels have deleted",Toast.LENGTH_SHORT).show();
+                break;
             case R.id.menuCloseProgram:
                 System.exit(1);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
     @Override
     public void onClick(View view) {
         Log.d(TAG, "define button that invoked parser");
-        switch (view.getId()) {
-            case R.id.btn1:
-                Log.d(TAG, "button 1 pressed");
-                textView.setText(R.string.textBtn1);
+        int idView = view.getId();
+        if (idView == R.id.btn1){
+            textView.setText(textButtonMap.get(1));
+        }
+        for (Map.Entry<Integer, Integer> entry : buttonMap.entrySet()) {
+            if (idView == entry.getValue()) {
+                textView.setText(textButtonMap.get(entry.getKey()));
+                Log.d(TAG, ""+textButtonMap.get(entry.getKey()));;
                 break;
-            case R.id.btn2:
-                Log.d(TAG, "button 2 pressed");
-                textView.setText(R.string.textBtn2);
-                break;
-            case R.id.btn3:
-                Log.d(TAG, "button 3 pressed");
-                textView.setText(R.string.textBtn3);
-                break;
-            case R.id.btn4:
-                Log.d(TAG, "button 4 pressed");
-                textView.setText(R.string.textBtn4);
-                break;
-            case R.id.btnBack:
-                Log.d(TAG, "button Back pressed");;
-                textView.setText(R.string.textBtnBack);
-                break;
+            }
         }
     }
 }

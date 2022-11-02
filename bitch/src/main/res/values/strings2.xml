@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textOk">Button OK presses</string>
+    <string name="textCancel">Button Cancel presses</string>
+    <color name="colorPink">#60ED2DDA</color>
+</resources>

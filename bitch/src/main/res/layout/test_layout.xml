@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="30dp">
+        android:layout_margin="30dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewOut"
@@ -22,15 +24,22 @@
             android:text="@string/text_view" />
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
+            android:id="@+id/btnOk"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="clickBtnOk"
+            android:text="@string/btnOk" />
+        <!--            android:background="@color/colorPink"-->
+
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
+            android:id="@+id/btnCancel"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="clickBtnCancel"
+            android:text="@string/btnCancel" />
+
     </LinearLayout>
 </LinearLayout>

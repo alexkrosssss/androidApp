@@ -12,5 +12,13 @@
     <string name="textBtn10">Button 10 pressed</string>
     <string name="textBtn11">Button 11 pressed</string>
     <string name="textBtn12">Button 12 pressed</string>
+    <string name="textBtn13">Button 13 pressed</string>
+    <string name="textBtn14">Button 14 pressed</string>
+    <string name="textBtn15">Button 15 pressed</string>
+    <string name="textBtn16">Button 16 pressed</string>
+    <string name="textBtn17">Button 17 pressed</string>
+    <string name="textBtn18">Button 18 pressed</string>
+    <string name="textBtn19">Button 19 pressed</string>
+    <string name="textBtn20">Button 20 pressed</string>
     <string name="textBtnBack">Button Back pressed</string>
 </resources>

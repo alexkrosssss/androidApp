@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textBtn1">Button 1 pressed</string>
+    <string name="textBtn2">Button 2 pressed</string>
+    <string name="textBtn3">Button 3 pressed</string>
+    <string name="textBtn4">Button 4 pressed</string>
+    <string name="textBtn5">Button 5 pressed</string>
+    <string name="textBtn6">Button 6 pressed</string>
+    <string name="textBtn7">Button 7 pressed</string>
+    <string name="textBtn8">Button 8 pressed</string>
+    <string name="textBtn9">Button 9 pressed</string>
+    <string name="textBtn10">Button 10 pressed</string>
+    <string name="textBtn11">Button 11 pressed</string>
+    <string name="textBtn12">Button 12 pressed</string>
+    <string name="textBtnBack">Button Back pressed</string>
+</resources>

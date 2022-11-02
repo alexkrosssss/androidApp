@@ -75,5 +75,19 @@
             android:text="@string/btn4" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="624dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llSubMain"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>
