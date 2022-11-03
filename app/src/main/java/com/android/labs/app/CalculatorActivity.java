@@ -4,8 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnBack, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnEqual,
@@ -43,7 +51,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         btnDot = findViewById(R.id.btnDot);
         btnSupCalc = findViewById(R.id.btnSupCalc);
         btnPowIn2 = findViewById(R.id.btnPowInTwo);
-        btnLog = findViewById(R.id.btnLogTen);
+        btnLog = findViewById(R.id.btnPer);
 
         btnBack.setOnClickListener(this::onClick);
         btnSimCalc.setOnClickListener(this::onClick);
@@ -71,78 +79,144 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.btnMoveToMain:
                 Intent intentCalc = new Intent(this, Welcome.class);
                 startActivity(intentCalc);
                 break;
             case R.id.btnSupCalc:
+                Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
                 btnPowIn2.setVisibility(View.VISIBLE);
                 btnLog.setVisibility(View.VISIBLE);
+                btnPowIn2.startAnimation(anim);
+                btnLog.startAnimation(anim);
                 break;
             case R.id.btnSimCalc:
+                Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.reverse_alpha);
                 btnPowIn2.setVisibility(View.INVISIBLE);
                 btnLog.setVisibility(View.INVISIBLE);
+                btnLog.startAnimation(anim2);
+                btnPowIn2.startAnimation(anim2);
                 break;
             case R.id.btnZero:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "0";
                 textViewField.setText(strField);
                 break;
             case R.id.btnOne:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "1";
                 textViewField.setText(strField);
                 break;
             case R.id.btnTwo:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "2";
                 textViewField.setText(strField);
                 break;
             case R.id.btnThree:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "3";
                 textViewField.setText(strField);
                 break;
             case R.id.btnFour:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "4";
                 textViewField.setText(strField);
                 break;
             case R.id.btnFive:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "5";
                 textViewField.setText(strField);
                 break;
             case R.id.btnSix:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "6";
                 textViewField.setText(strField);
                 break;
             case R.id.btnSeven:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "7";
                 textViewField.setText(strField);
                 break;
             case R.id.btnEight:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "8";
                 textViewField.setText(strField);
                 break;
             case R.id.btnNine:
+                if (strField.endsWith(StringParser.PERCENT)) {
+                    strField += "*";
+                }
                 strField += "9";
                 textViewField.setText(strField);
                 break;
             case R.id.btnAdd:
-                strField += "+";
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "+";
+                } else {
+                    strField += "+";
+                }
                 textViewField.setText(strField);
                 break;
             case R.id.btnMulty:
-                strField += "*";
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "*";
+                } else {
+                    strField += "*";
+                }
                 textViewField.setText(strField);
                 break;
             case R.id.btnSub:
-                strField += "-";
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "-";
+                } else {
+                    strField += "-";
+                }
                 textViewField.setText(strField);
                 break;
             case R.id.btnDiv:
-                strField += "/";
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "/";
+                } else {
+                    strField += "/";
+                }
                 textViewField.setText(strField);
                 break;
             case R.id.btnDot:
                 if (strField.charAt(strField.length() - 1) < 48
-                        || strField.charAt(strField.length() - 1) > 57 ) {
+                        || strField.charAt(strField.length() - 1) > 57
+                        || strField.length() == 0) {
                     strField += "0";
                 }
                 strField += ".";
@@ -157,16 +231,57 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 textViewField.setText(strField);
                 break;
             case R.id.btnEqual:
+                StringParser parser = new StringParser(strField);
+
+                ArrayList<String> operations = parser.parse();
+
+                    CalculationParser calculationParser = new CalculationParser(operations);
+                    double result = calculationParser.calculate();
+                    strField = String.valueOf(result);
+                    textViewField.setText(String.valueOf(result));
+
+
+//                    textViewField.setText(String.valueOf("ERROR"));
+//                    strField="";
 
                 break;
             case R.id.btnPowInTwo:
-                strField += "^2";
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "^2";
+                } else {
+                    strField += "^2";
+                }
                 textViewField.setText(strField);
                 break;
-            case R.id.btnLogTen:
-                strField = "ln(" + strField + ")";
+            case R.id.btnPer:
+                if (strField.length() == 0) {
+                    strField += "0";
+                }
+                if (isOperator(strField.substring(strField.length() - 1))) {
+                    strField = strField.substring(0, strField.length() - 1) + "%";
+                } else {
+                    strField += "%";
+                }
                 textViewField.setText(strField);
                 break;
         }
+
+    }
+    private boolean isOperator(String operator){
+        boolean result = false;
+        switch(operator) {
+            case StringParser.POW_IN_TWO:
+            case StringParser.SUBTRACTION:
+            case StringParser.PERCENT:
+            case StringParser.ADDITION:
+            case StringParser.DIVISION:
+            case StringParser.MULTIPLICATION:
+                result = true;
+                break;
+        }
+        return result;
     }
 }

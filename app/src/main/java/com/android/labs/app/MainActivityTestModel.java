@@ -12,6 +12,8 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -171,6 +173,8 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
                         lParams.setMargins(15, 35, 15, 10);
                     }
                     llSubMain.addView(bt, lParams);
+                    Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
+                    bt.startAnimation(anim);
                 }
 
                 break;
@@ -188,6 +192,7 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         Log.d(TAG, "define button that invoked parser");
+
         int idView = view.getId();
         if (idView == R.id.btnBack){
             Intent intent = new Intent(this, Welcome.class);
@@ -195,6 +200,7 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
         } else {
             for (Map.Entry<Integer, Integer> entry : buttonMap.entrySet()) {
                 if (idView == entry.getValue()) {
+
                     textView.setText(textButtonMap.get(entry.getKey()));
                     Log.d(TAG, "" + textButtonMap.get(entry.getKey()));;
                     break;

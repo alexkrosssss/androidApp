@@ -11,7 +11,7 @@
         android:id="@+id/btnLevels"
         android:layout_width="160dp"
         android:layout_height="80dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="140dp"
         android:text="Levels"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,10 +22,23 @@
         android:id="@+id/btnCalc"
         android:layout_width="160dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="276dp"
+        android:layout_marginBottom="344dp"
         android:text="Calculator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="208dp"
+        android:text="Exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalc"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

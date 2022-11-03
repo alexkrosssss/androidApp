@@ -9,12 +9,15 @@ import android.widget.Button;
 public class Welcome extends AppCompatActivity implements View.OnClickListener {
     Button btnLevel;
     Button btnCalc;
+    Button btnExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         btnLevel = findViewById(R.id.btnLevels);
         btnCalc = findViewById(R.id.btnCalc);
+        btnExit = findViewById(R.id.btnExit);
+        btnExit.setOnClickListener(this::onClick);
         btnLevel.setOnClickListener(this::onClick);
         btnCalc.setOnClickListener(this::onClick);
     }
@@ -29,6 +32,9 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
             case R.id.btnLevels:
                 Intent intentLev = new Intent(this, MainActivityTestModel.class);
                 startActivity(intentLev);
+                break;
+            case R.id.btnExit:
+                System.exit(1);
                 break;
         }
     }
