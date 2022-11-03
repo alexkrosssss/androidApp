@@ -2,6 +2,7 @@ package com.android.labs.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -188,14 +189,16 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         Log.d(TAG, "define button that invoked parser");
         int idView = view.getId();
-        if (idView == R.id.btn1){
-            textView.setText(textButtonMap.get(1));
-        }
-        for (Map.Entry<Integer, Integer> entry : buttonMap.entrySet()) {
-            if (idView == entry.getValue()) {
-                textView.setText(textButtonMap.get(entry.getKey()));
-                Log.d(TAG, ""+textButtonMap.get(entry.getKey()));;
-                break;
+        if (idView == R.id.btnBack){
+            Intent intent = new Intent(this, Welcome.class);
+            startActivity(intent);
+        } else {
+            for (Map.Entry<Integer, Integer> entry : buttonMap.entrySet()) {
+                if (idView == entry.getValue()) {
+                    textView.setText(textButtonMap.get(entry.getKey()));
+                    Log.d(TAG, "" + textButtonMap.get(entry.getKey()));;
+                    break;
+                }
             }
         }
     }

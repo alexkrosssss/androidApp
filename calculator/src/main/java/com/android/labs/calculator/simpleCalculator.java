@@ -1,13 +1,13 @@
-package com.android.labs.testmodul;
+package com.android.labs.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivityTestModel extends AppCompatActivity {
+public class simpleCalculator extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_calculator);
+        setContentView(R.layout.activity_simple_calculator);
     }
 }
