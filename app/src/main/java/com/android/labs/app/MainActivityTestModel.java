@@ -30,8 +30,7 @@ import java.util.Set;
 public class MainActivityTestModel extends AppCompatActivity implements View.OnClickListener{
 
     TextView textView;
-    Button btnBack, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12,
-            btn13, btn14, btn15, btn16, btn17, btn18, btn19, btn20;
+    Button btnBack, btn1, btn2, btn3, btn4;
     LinearLayout llMain, llSubMain;
     int countButton = 0;
     Map<Integer, Integer> buttonMap = new HashMap<>();
@@ -156,6 +155,8 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
                     bt.setText(buttonMap.get(countButton));
                     bt.setOnClickListener(this::onClick);
                     bt.setBackgroundColor(getResources().getColor(R.color.teal_200));
+//                    bt.setTextColor(getResources().getColor(R.color.white));
+//                    bt.setTextSize(18);
                     registerForContextMenu(bt);
                     if (l == 4) {
                         LinearLayout linearLayout = new LinearLayout(this);
@@ -184,11 +185,13 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
                 Toast.makeText(this, "new levels have deleted",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuCloseProgram:
-                System.exit(1);
+                finishAffinity();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
     @Override
     public void onClick(View view) {
         Log.d(TAG, "define button that invoked parser");

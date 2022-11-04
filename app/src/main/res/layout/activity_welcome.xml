@@ -9,10 +9,14 @@
 
     <Button
         android:id="@+id/btnLevels"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
         android:layout_marginTop="140dp"
+        android:backgroundTint="#8880857E"
+        android:foregroundTint="#7E4A4A"
         android:text="Levels"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,20 +24,28 @@
 
     <Button
         android:id="@+id/btnCalc"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="344dp"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="384dp"
+        style="@android:style/Widget.Holo.Button"
+        android:backgroundTint="#8880857E"
+        android:foregroundTint="#7E4A4A"
         android:text="Calculator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLevels"
+        app:layout_constraintVertical_bias="0.928" />
 
     <Button
         android:id="@+id/btnExit"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
         android:layout_marginBottom="208dp"
+        android:backgroundTint="#8880857E"
+        android:foregroundTint="#7E4A4A"
         android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,4 +53,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCalc"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pexels_henry___co_1939485"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>

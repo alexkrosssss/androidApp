@@ -1,15 +1,19 @@
 package com.android.labs.app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Welcome extends AppCompatActivity implements View.OnClickListener {
     Button btnLevel;
     Button btnCalc;
     Button btnExit;
+    private long timePress;
+    private Toast showToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,19 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
+    public void onBackPressed() {
+        if (timePress + 2000 > System.currentTimeMillis()) {
+            showToast.cancel();
+            super.onBackPressed();
+
+            return;
+        } else {
+            showToast = Toast.makeText(getBaseContext(), "Press one more time for exit", Toast.LENGTH_SHORT);
+            showToast.show();
+        }
+        timePress = System.currentTimeMillis();
+    }
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCalc:
@@ -34,7 +51,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intentLev);
                 break;
             case R.id.btnExit:
-                System.exit(1);
+                finishAffinity();
                 break;
         }
     }

@@ -17,7 +17,7 @@ public class StringParser {
     public final static String POW_IN_TWO = "^";
     public final static String PERCENT = "%";
 
-    private final static String OPERATORS_AND_DIGITS = "[\\-+*/^%]|[0-9]+[.][0-9]+|[0-9]+";
+    private final static String OPERATORS_AND_DIGITS = "^-[0-9]+[.][0-9]+|^-[0-9]+|[\\-+*/^%]|[0-9]+[.][0-9]+|[0-9]+";
 //    private final static String DIGITS = "";
 
     private String originalString;

@@ -16,9 +16,12 @@
 
         <Button
             android:id="@+id/btnMoveToMain"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="Back" />
 
         <Button
@@ -26,6 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
+            style="@android:style/Widget.Holo.Button"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="Simple" />
 
         <Button
@@ -33,24 +39,27 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
+            style="@android:style/Widget.Holo.Button"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="Scientific" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="91dp"
+        android:layout_height="51dp"
         android:orientation="horizontal"></LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:orientation="horizontal"
+        android:layout_width="356dp"
+        android:layout_height="127dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textViewField"
-            android:layout_width="415dp"
+            android:layout_width="357dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|right"
@@ -73,6 +82,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
                 android:text="%"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:visibility="invisible" />
 
             <Button
@@ -80,18 +92,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
                 android:text="x^2"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnErase"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="C" />
 
             <Button
                 android:id="@+id/btnEqual"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="=" />
         </TableRow>
 
@@ -103,24 +124,36 @@
                 android:id="@+id/btnOne"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="1" />
 
             <Button
                 android:id="@+id/btnTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="2" />
 
             <Button
                 android:id="@+id/btnThree"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="3" />
 
             <Button
                 android:id="@+id/btnAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="+" />
         </TableRow>
 
@@ -132,24 +165,36 @@
                 android:id="@+id/btnFour"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="4" />
 
             <Button
                 android:id="@+id/btnFive"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="5" />
 
             <Button
                 android:id="@+id/btnSix"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="6" />
 
             <Button
                 android:id="@+id/btnSub"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="-" />
         </TableRow>
 
@@ -161,24 +206,36 @@
                 android:id="@+id/btnSeven"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="7" />
 
             <Button
                 android:id="@+id/btnEight"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="8" />
 
             <Button
                 android:id="@+id/btnNine"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="9" />
 
             <Button
                 android:id="@+id/btnDiv"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="/" />
         </TableRow>
 
@@ -188,27 +245,41 @@
 
             <Button
                 android:id="@+id/btnZero"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="0" />
 
             <Button
                 android:id="@+id/btnDot"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="." />
 
             <Button
                 android:id="@+id/btnEraseChar"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
+
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="Back" />
 
             <Button
                 android:id="@+id/btnMulty"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="90dp"
+                style="@android:style/Widget.Holo.Button"
+                android:backgroundTint="#8880857E"
+                android:foregroundTint="#7E4A4A"
                 android:text="*" />
         </TableRow>
     </TableLayout>
+
 </LinearLayout>

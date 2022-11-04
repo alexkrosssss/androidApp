@@ -82,6 +82,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         switch (view.getId()) {
             case R.id.btnMoveToMain:
+//                finish();
                 Intent intentCalc = new Intent(this, Welcome.class);
                 startActivity(intentCalc);
                 break;
@@ -173,6 +174,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 if (strField.length() == 0) {
                     strField += "0";
                 }
+                //allow replace operator to new if operator placed early
                 if (isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "+";
                 } else {
@@ -184,6 +186,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 if (strField.length() == 0) {
                     strField += "0";
                 }
+                //allow replace operator to new if operator placed early
                 if (isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "*";
                 } else {
@@ -192,10 +195,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 textViewField.setText(strField);
                 break;
             case R.id.btnSub:
-                if (strField.length() == 0) {
-                    strField += "0";
-                }
-                if (isOperator(strField.substring(strField.length() - 1))) {
+                //allow replace operator to new if operator placed early
+                if (strField.length() > 1 && isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "-";
                 } else {
                     strField += "-";
@@ -206,6 +207,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 if (strField.length() == 0) {
                     strField += "0";
                 }
+                //allow replace operator to new if operator placed early
                 if (isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "/";
                 } else {
@@ -232,23 +234,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnEqual:
                 StringParser parser = new StringParser(strField);
-
                 ArrayList<String> operations = parser.parse();
+                CalculationParser calculationParser = new CalculationParser(operations);
+                try {
+                    String result = calculationParser.calculate();
+                    strField = result;
+                    textViewField.setText(strField);
 
-                    CalculationParser calculationParser = new CalculationParser(operations);
-                    double result = calculationParser.calculate();
-                    strField = String.valueOf(result);
-                    textViewField.setText(String.valueOf(result));
-
-
-//                    textViewField.setText(String.valueOf("ERROR"));
-//                    strField="";
-
+                } catch (IndexOutOfBoundsException e) {
+                    strField = "";
+                    textViewField.setText("ERROR");
+                } catch (Exception e) {
+                    strField = "";
+                    textViewField.setText("ERROR");
+                }
                 break;
             case R.id.btnPowInTwo:
                 if (strField.length() == 0) {
                     strField += "0";
                 }
+                //allow replace operator to new if operator placed early
                 if (isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "^2";
                 } else {
@@ -260,6 +265,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 if (strField.length() == 0) {
                     strField += "0";
                 }
+                //allow replace operator to new if operator placed early
                 if (isOperator(strField.substring(strField.length() - 1))) {
                     strField = strField.substring(0, strField.length() - 1) + "%";
                 } else {

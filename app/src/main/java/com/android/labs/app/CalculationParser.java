@@ -17,7 +17,7 @@ public class CalculationParser {
         this.sequence = sequence;
     }
 
-    public double calculate(){
+    public String calculate(){
         calcCount();
         calcPow();
         calcPer();
@@ -25,8 +25,11 @@ public class CalculationParser {
         calcDiv();
         calcSum();
         calcSub();
-
-        return Double.parseDouble(sequence.get(0));
+        String result = sequence.get(0);
+        if (result.endsWith(".0")) {
+            result = result.substring(0,result.length()-2);
+        }
+        return result;
     }
 
     private void calcCount(){
