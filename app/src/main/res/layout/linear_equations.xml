@@ -14,24 +14,23 @@
         <Button
             android:id="@+id/btnBack"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="40dp"
+            android:layout_width="25dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:backgroundTint="#8880857E"
-            android:foregroundTint="#7E4A4A"
+            android:background="#8880857E"
             android:text="@string/btnBack" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:text="@string/app_name"
             android:textSize="16sp" />
     </LinearLayout>

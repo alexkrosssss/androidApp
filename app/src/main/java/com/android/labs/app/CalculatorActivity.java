@@ -87,18 +87,24 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 startActivity(intentCalc);
                 break;
             case R.id.btnSupCalc:
-                Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
-                btnPowIn2.setVisibility(View.VISIBLE);
-                btnLog.setVisibility(View.VISIBLE);
-                btnPowIn2.startAnimation(anim);
-                btnLog.startAnimation(anim);
+                if (btnPowIn2.getVisibility() == View.INVISIBLE
+                        && btnLog.getVisibility() == View.INVISIBLE) {
+                    Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
+                    btnPowIn2.setVisibility(View.VISIBLE);
+                    btnLog.setVisibility(View.VISIBLE);
+                    btnPowIn2.startAnimation(anim);
+                    btnLog.startAnimation(anim);
+                }
                 break;
             case R.id.btnSimCalc:
-                Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.reverse_alpha);
-                btnPowIn2.setVisibility(View.INVISIBLE);
-                btnLog.setVisibility(View.INVISIBLE);
-                btnLog.startAnimation(anim2);
-                btnPowIn2.startAnimation(anim2);
+                if (btnPowIn2.getVisibility() == View.VISIBLE
+                        && btnLog.getVisibility() == View.VISIBLE) {
+                    Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.reverse_alpha);
+                    btnPowIn2.setVisibility(View.INVISIBLE);
+                    btnLog.setVisibility(View.INVISIBLE);
+                    btnLog.startAnimation(anim2);
+                    btnPowIn2.startAnimation(anim2);
+                }
                 break;
             case R.id.btnZero:
                 if (strField.endsWith(StringParser.PERCENT)) {

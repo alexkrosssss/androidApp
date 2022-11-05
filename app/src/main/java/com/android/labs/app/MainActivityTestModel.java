@@ -148,6 +148,7 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
                 else {
                     showToast = Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT);
                     showToast.show();
+
                     Button bt = new Button(this);
                     bt.setId(buttonMap.get(countButton+1));
                     bt.setText(buttonMap.get(countButton+1));
