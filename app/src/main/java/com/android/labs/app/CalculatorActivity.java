@@ -216,38 +216,23 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 textViewField.setText(strField);
                 break;
             case R.id.btnDot:
-                if (strField.charAt(strField.length() - 1) < 48
-                        || strField.charAt(strField.length() - 1) > 57
-                        || strField.length() == 0) {
+                if (strField.length() == 0
+                        || strField.charAt(strField.length() - 1) < 48
+                        || strField.charAt(strField.length() - 1) > 57) {
                     strField += "0";
                 }
                 strField += ".";
                 textViewField.setText(strField);
                 break;
             case R.id.btnEraseChar:
-                strField = strField.substring(0, strField.length() - 1);
-                textViewField.setText(strField);
+                if (strField.length() != 0) {
+                    strField = strField.substring(0, strField.length() - 1);
+                    textViewField.setText(strField);
+                }
                 break;
             case R.id.btnErase:
                 strField = "";
                 textViewField.setText(strField);
-                break;
-            case R.id.btnEqual:
-                StringParser parser = new StringParser(strField);
-                ArrayList<String> operations = parser.parse();
-                CalculationParser calculationParser = new CalculationParser(operations);
-                try {
-                    String result = calculationParser.calculate();
-                    strField = result;
-                    textViewField.setText(strField);
-
-                } catch (IndexOutOfBoundsException e) {
-                    strField = "";
-                    textViewField.setText("ERROR");
-                } catch (Exception e) {
-                    strField = "";
-                    textViewField.setText("ERROR");
-                }
                 break;
             case R.id.btnPowInTwo:
                 if (strField.length() == 0) {
@@ -273,13 +258,32 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 }
                 textViewField.setText(strField);
                 break;
+            case R.id.btnEqual:
+                if (strField.length() != 0) {
+                    StringParser parser = new StringParser(strField);
+                    ArrayList<String> operations = parser.parse();
+                    CalculationParser calculationParser = new CalculationParser(operations);
+                    try {
+                        String result = calculationParser.calculate();
+                        strField = result;
+                        textViewField.setText(strField);
+
+                    } catch (IndexOutOfBoundsException e) {
+                        strField = "";
+                        textViewField.setText("ERROR");
+                    } catch (Exception e) {
+                        strField = "";
+                        textViewField.setText("ERROR");
+                    }
+                }
+                break;
         }
 
     }
     private boolean isOperator(String operator){
         boolean result = false;
         switch(operator) {
-            case StringParser.POW_IN_TWO:
+            case StringParser.POW_IN_TWO_2:
             case StringParser.SUBTRACTION:
             case StringParser.PERCENT:
             case StringParser.ADDITION:

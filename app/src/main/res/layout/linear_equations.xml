@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E1ACAC"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,10 +13,12 @@
 
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="@string/btnBack" />
 
         <TextView
@@ -30,7 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/app_name" />
+            android:text="@string/app_name"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,38 +43,48 @@
 
         <Button
             android:id="@+id/btn1"
-            android:layout_width="wrap_content"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="64dp"
+
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
+
             android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="@string/btn1" />
 
         <Button
             android:id="@+id/btn2"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
             android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="@string/btn2" />
 
         <Button
             android:id="@+id/btn3"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
             android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="@string/btn3" />
 
         <Button
             android:id="@+id/btn4"
+            style="@android:style/Widget.Holo.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
             android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#8880857E"
+            android:foregroundTint="#7E4A4A"
             android:text="@string/btn4" />
     </LinearLayout>
 
@@ -79,15 +92,7 @@
         android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="624dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/llSubMain"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:orientation="horizontal"/>
-
-    </LinearLayout>
+        android:orientation="vertical" />
 
 
 </LinearLayout>

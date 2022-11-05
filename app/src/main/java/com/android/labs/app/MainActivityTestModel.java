@@ -31,7 +31,7 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
 
     TextView textView;
     Button btnBack, btn1, btn2, btn3, btn4;
-    LinearLayout llMain, llSubMain;
+    LinearLayout llMain;
     int countButton = 0;
     Map<Integer, Integer> buttonMap = new HashMap<>();
     Map<Integer, Integer> textButtonMap = new HashMap<>();
@@ -44,7 +44,6 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
         btnBack = findViewById(R.id.btnBack);
 
         llMain = findViewById(R.id.llMain);
-        llSubMain = findViewById(R.id.llSubMain);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
@@ -131,58 +130,62 @@ public class MainActivityTestModel extends AppCompatActivity implements View.OnC
         }
         return super.onContextItemSelected(item);
     }
-
+    LinearLayout linearLayout;
+    LinearLayout.LayoutParams lParams;
+    LinearLayout.LayoutParams lParams2;
+    private Toast showToast;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
+        if (showToast != null) {
+            showToast.cancel();
+        }
         switch (item.getItemId()) {
             case R.id.menuCreateLevel:
                 if (countButton >= 20) {
-                    Toast.makeText(this, "You create max number levels", Toast.LENGTH_LONG).show();
+                    showToast = Toast.makeText(this, "You create max number levels", Toast.LENGTH_LONG);
+                    showToast.show();
                 }
                 else {
-                    Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                    int l = llSubMain.getChildCount();
-                    LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lParams.setMargins(15, 10, 15, 10);
-                    lParams.weight = 1;
-
+                    showToast = Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT);
+                    showToast.show();
                     Button bt = new Button(this);
-                    countButton++;
-                    bt.setId(buttonMap.get(countButton));
-                    bt.setText(buttonMap.get(countButton));
+                    bt.setId(buttonMap.get(countButton+1));
+                    bt.setText(buttonMap.get(countButton+1));
+                    bt.setBackgroundColor(getResources().getColor(R.color.newColor));
+                    bt.setTextColor(getResources().getColor(R.color.white));
+                    bt.setTextSize(18);
+
                     bt.setOnClickListener(this::onClick);
-                    bt.setBackgroundColor(getResources().getColor(R.color.teal_200));
-//                    bt.setTextColor(getResources().getColor(R.color.white));
-//                    bt.setTextSize(18);
                     registerForContextMenu(bt);
-                    if (l == 4) {
-                        LinearLayout linearLayout = new LinearLayout(this);
+
+                    if (countButton % 4 == 0) {
+                        linearLayout = new LinearLayout(this);
                         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                        LinearLayout.LayoutParams lParams2 = new LinearLayout.LayoutParams(
+                        lParams = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.WRAP_CONTENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT);
-                        lParams2.setMargins(15, 20, 15, 20);
-
-                        llMain.addView(linearLayout);
-                        //                    llMain.addView(linearLayout,lParams2);
-                        llSubMain = linearLayout;
+//                        lParams.weight = 1;
+                        lParams.setMargins(15, 10, 15, 10);
+                        lParams2 = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lParams2.setMargins(0, 0, 0, 20);
+//                        lParams2.weight = 1;
+                        linearLayout.addView(bt, lParams);
+                        llMain.addView(linearLayout,lParams2);
+                    } else {
+                        linearLayout.addView(bt, lParams);
                     }
-                    if (countButton >= 13) {
-                        lParams.setMargins(15, 35, 15, 10);
-                    }
-                    llSubMain.addView(bt, lParams);
+                    countButton++;
                     Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
                     bt.startAnimation(anim);
                 }
-
                 break;
             case R.id.menuClearLevels:
                 llMain.removeAllViews();
                 countButton = 4;
-                Toast.makeText(this, "new levels have deleted",Toast.LENGTH_SHORT).show();
+                showToast = Toast.makeText(this, "new levels have deleted", Toast.LENGTH_SHORT);
+                showToast.show();
                 break;
             case R.id.menuCloseProgram:
                 finishAffinity();

@@ -31,7 +31,6 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
         if (timePress + 2000 > System.currentTimeMillis()) {
             showToast.cancel();
             super.onBackPressed();
-
             return;
         } else {
             showToast = Toast.makeText(getBaseContext(), "Press one more time for exit", Toast.LENGTH_SHORT);
