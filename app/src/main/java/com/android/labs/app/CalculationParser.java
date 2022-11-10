@@ -25,11 +25,12 @@ public class CalculationParser {
         calcDiv();
         calcSum();
         calcSub();
-        String result = sequence.get(0);
-        if (result.endsWith(".0")) {
-            result = result.substring(0,result.length()-2);
+        double result = (double) Math.round(Double.parseDouble(sequence.get(0)) * Calculator.ROUND) / Calculator.ROUND;
+        String strResult = String.valueOf(result);
+        if (strResult.endsWith(".0")) {
+            strResult = strResult.substring(0,strResult.length()-2);
         }
-        return result;
+        return strResult;
     }
 
     private void calcCount(){
